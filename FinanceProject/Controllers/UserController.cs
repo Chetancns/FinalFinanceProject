@@ -16,8 +16,20 @@ namespace FinanceProject.Controllers
         public HttpResponseMessage GetDashBoard(string email)
         {
             project1Entities db = new project1Entities();
-            var data = db.CardDetails.Where(x => x.Email == email);
-            return Request.CreateResponse(HttpStatusCode.OK, data);
+            var data = from c in db.CardDetails
+                       join u in db.UserTables on c.Email equals u.Email
+                       where c.Email == email
+                       select new
+                       {
+                           CardNumber = c.CardNumber,
+                           Name = u.Name,
+                           Type = c.Type,
+                           CurrentLimit = c.CurrentLimit,
+                           ValidFrom = c.ValidFrom,
+                           ValidTill = c.ValidTill,
+                           CVV = c.CVV
+                       };
+            return Request.CreateResponse(HttpStatusCode.OK, data.ToList());
         }
     }
 }

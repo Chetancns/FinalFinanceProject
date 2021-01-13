@@ -1,6 +1,6 @@
 export interface IData{
     CardNumber:number;
-    Email:string;
+    Name:string;
     Type:string;
     CurrentLimit:number;
     ValidFrom:string;

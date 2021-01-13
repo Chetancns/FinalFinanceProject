@@ -26,9 +26,9 @@
                     <tr *ngFor="let data of Finance" [ngClass]="(data.value)?'btn-success':'btn-danger'">
                         <th scope="row">{{data.FinanceID}}</th>
                         <td>{{data.Months}}</td>
-                        <td>{{data.EmiAmount}}</td>
-                        <td>{{data.TotalAmount}}</td>
-                        <td>{{data.RemainingAmount}}</td>
+                        <td>{{data.EmiAmount| currency:'₹'}}</td>
+                        <td>{{data.TotalAmount| currency:'₹'}}</td>
+                        <td>{{data.RemainingAmount| currency:'₹'}}</td>
                         <td>{{data.purchaseDate | date:'mediumDate'}}</td>
                         <td>{{data.ProductName}}</td>
                         <td>{{data.LastPaymentDate | date:'mediumDate'}}</td>

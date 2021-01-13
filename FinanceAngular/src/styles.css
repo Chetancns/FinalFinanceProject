@@ -1,0 +1,6 @@
+body{
+    background-image: url('./assets/images/credit-card-close.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}

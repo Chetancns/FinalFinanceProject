@@ -24,7 +24,8 @@ import { ListOfFinanceComponent } from './dashboard/list-of-finance/list-of-fina
 import {ProductComponent} from './product/product.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { TncComponent } from './tnc/tnc.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { HomeComponent } from './home/home.component'
     ProductDetailsComponent,
     ProductComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    TncComponent
   ],
   imports: [
     BrowserModule,

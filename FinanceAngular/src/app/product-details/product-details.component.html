@@ -6,12 +6,11 @@
 
     </div>
 
-    <div class="padding-20"></div>
     <!-- <div class="row text-center">
             <div class="col-md-3 col-sm-6"> -->
 
     <div class="thumbnail">
-        <img src="{{'assets/images/' + productdata.ImageName}}" alt="Apple iPhone 12 Pro">
+        <img src="{{'assets/images/' + productdata.ImageName}}" class="center" alt="Apple iPhone 12 Pro">
         <div class="caption" class="text-center">
             <h1>{{productdata.ProductName}} </h1>
             <p><b>Cost :{{productdata.Price | currency:'₹' }}</b></p>
@@ -24,10 +23,10 @@
             <div>
                 
                 <h5><span>EMI OPTIONS </span></h5>
-                <select (change)="selectChangeHandler($event)"   [(ngModel)]='finance.Months'>
-                    <option value="none" selected  >Select</option>
-                    <option value="3">3 MONTHS </option>
+                <select (change)="selectChangeHandler($event)"   [(ngModel)]='finance.Months' aria-placeholder="select">
                     
+                    <option value="Select" selected>Select</option>
+                    <option value="3"  >3 MONTHS </option>
                     <option value="6">6 MONTHS</option>
                     <option value="9">9 MONTHS</option>
                     <option value="12">12 MONTHS</option>
@@ -35,7 +34,7 @@
                 </select>
             <br/>
            <br/>
-                <p><span> EMI Starting : </span><b> ₹{{selectedEmi | number}} pm</b></p>
+                <p><span> EMI Starting : </span><b> ₹{{selectedEmi | currency:'₹'}} pm</b></p>
             </div>
 
            <button class="btn btn-primary" (click)="onBuy()">Buy Now</button>

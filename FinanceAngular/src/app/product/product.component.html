@@ -8,20 +8,21 @@
             </p>
         </div>
         <div *ngFor="let product of productlist">
-        <div class="padding-20"></div>
+
         <!-- <div class="row text-center">
             <div class="col-md-3 col-sm-6"> -->
                 
                 <div class="thumbnail">
-                    <img src="{{'assets/images/' + product.ImageName}}" alt="Apple iPhone 12 Pro">
+                    <img src="{{'assets/images/' + product.ImageName}}" class="center" alt="Apple iPhone 12 Pro">
                     <div class="caption" class="text-center">
                         <h6>{{product.ProductName}} </h6>
                         <p>Cost :{{product.Price | currency:'₹' }}</p>
                         <!-- <button class="add-to-cart" (click)="ClikedOnAddToCart()">Add to Cart</button> -->
-                        <a [routerLink]="['/productdetails/', product.ProductID]" class="btn btn-primary btn-sm float-right" >Display</a>
+                        <a [routerLink]="['/productdetails/', product.ProductID]" class="btn btn-primary btn-sm " >Display</a>
                     </div>
                     
                 </div>
+                <br>
             <!-- </div> -->
             
         <!-- </div> -->

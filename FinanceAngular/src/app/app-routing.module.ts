@@ -19,7 +19,7 @@ import { ListOfFinanceComponent } from "./dashboard/list-of-finance/list-of-fina
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductComponent } from './product/product.component';
 import {HomeComponent} from './home/home.component';
-
+import {TncComponent} from './tnc/tnc.component';
 const routes: Routes = [
   {path:'admin',component:AdminComponent},
   {path:'admin/validate',component:ValidateComponent},
@@ -40,6 +40,7 @@ const routes: Routes = [
   {path:'product', component:ProductComponent},
   {path:'productdetails/:id', component:ProductDetailsComponent},
   {path:'home',component:HomeComponent},
+  {path:'tnc',component:TncComponent},
   {path:'',redirectTo:'/home',pathMatch:'full'}
 
 ];
