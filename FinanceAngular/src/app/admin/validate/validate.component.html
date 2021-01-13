@@ -1,0 +1,39 @@
+<main role="main" class="container">
+   <div class="jumbotron text-center">
+        <h2>List of the User Waiting of Approval</h2>
+    <br>
+    <table class="table  table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Email Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Card Type</th>
+                <th scope="col">Validation Stauts</th>
+                <th scope="col">Approve</th>
+            </tr>
+        </thead>
+        
+       <tbody>
+           <tr *ngFor="let user of userlist;let i=index">
+               <th scope="row">{{i+1}}</th>
+               <td>{{user.Email}}</td>
+               <td>{{user.Name}}</td>
+               <td>{{user.Phone}}</td>
+               <td>{{user.Username}}</td>
+               <td>{{user.Address}}</td>
+               <td>{{user.Cardtype}}</td>
+               <td>{{user.Validation}}</td>
+               <td><a [routerLink]="['/admin/approve/',user.Email]" class="btn btn-primary btn-sm float-right">Approve</a></td>
+           </tr>
+       </tbody>
+    </table>
+    <table class="table">
+        <td><a [routerLink]="['/admin']" class="btn btn-warning btn-lg"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></td>
+        <td><a [routerLink]="['/admin']" class="btn btn-success btn-lg"><i class="fa fa-home" aria-hidden="true"></i> Home</a></td>
+    </table>
+   </div>
+</main>

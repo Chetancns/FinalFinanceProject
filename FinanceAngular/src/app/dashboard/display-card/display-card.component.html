@@ -1,0 +1,37 @@
+<style>
+    #bottom { 
+                position:absolute;                  
+                bottom:10px;                          
+                right:10px; 
+    }
+</style>
+<div *ngFor="let card of cardlist" style="margin-top: 10%;margin-left: 35%;margin-bottom: 10%;">
+        <div class="card ">
+            <div class="card__front card__part">
+              <img class="card__front-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+              <p  class="card__front-logo card__logo">{{card.Type}}</p>
+              <p class="card_numer">{{card.CardNumber}}</p>
+              <div class="card__space-75">
+                <span class="card__label">Card holder</span>
+                <p class="card__info">{{card.Email}}</p>
+              </div>
+              <div class="card__space-25">
+                <span class="card__label">Expires</span>
+                      <p class="card__info">{{card.ValidTill| date:'mediumDate'}}</p>
+              </div>
+            </div>
+            
+            <div class="card__back card__part">
+              <div class="card__black-line"></div>
+              <div class="card__back-content">
+                <div class="card__secret">
+                  <p class="card__secret--last">{{card.CVV}}</p>
+                </div>
+                <img class="card__back-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+                <p class="card__back-logo card__logo" >Current Limt:₹ {{card.CurrentLimit}}</p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+

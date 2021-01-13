@@ -1,0 +1,55 @@
+<main class="container" role="main">
+    <div class="container jumbotron">
+   
+        <h2 class=" text-center">
+            List of Finance <span *ngIf="Finance.length>0">of {{Finance[0].userName}}</span>
+        </h2>
+    <br><br>
+    <div class="container">
+        <div *ngIf="Finance.length>0;else elseBlock">
+        <h5>User Email Id: {{Finance[0].Email}}</h5>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">FinanceID</th>
+                        <th scope="col">Remaining Months</th>
+                        <th scope="col">Emi Amount</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Remaining Amount</th>
+                        <th scope="col">Purchase Date</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Last Payment Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of Finance" [ngClass]="(data.value)?'btn-success':'btn-danger'">
+                        <th scope="row">{{data.FinanceID}}</th>
+                        <td>{{data.Months}}</td>
+                        <td>{{data.EmiAmount}}</td>
+                        <td>{{data.TotalAmount}}</td>
+                        <td>{{data.RemainingAmount}}</td>
+                        <td>{{data.purchaseDate | date:'mediumDate'}}</td>
+                        <td>{{data.ProductName}}</td>
+                        <td>{{data.LastPaymentDate | date:'mediumDate'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table">
+                <td><a [routerLink]="['/admin/finance']" class="btn btn-warning btn-lg"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></td>
+                <td><a [routerLink]="['/admin']" class="btn btn-success btn-lg" style="float: right;"><i class="fa fa-home"  aria-hidden="true"></i> Home</a></td>
+            </table>
+                
+            
+        </div>
+        <ng-template #elseBlock>
+            <h2 class=" text-center">
+                No Finance is Made by the User
+            </h2>
+            <table class="table">
+                <td><a [routerLink]="['/admin/finance']" class="btn btn-warning btn-lg"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></td>
+                <td><a [routerLink]="['/admin']" class="btn btn-success btn-lg" style="float: right;"><i class="fa fa-home"  aria-hidden="true"></i> Home</a></td>
+            </table>
+        </ng-template>
+    </div>
+    </div>
+</main>

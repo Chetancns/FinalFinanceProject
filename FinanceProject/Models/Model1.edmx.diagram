@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd00d262f09b4488bbe7209bb077bb0c" Name="Diagram1">
+        <EntityTypeShape EntityType="project1Model.Admin" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="project1Model.BankDetail" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="project1Model.CardDetail" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="project1Model.CardType" Width="1.5" PointX="3.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="project1Model.Finance" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="project1Model.Product" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="project1Model.sysdiagram" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="project1Model.UserTable" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="project1Model.FK__BankDetai__Email__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="project1Model.FK__CardDetai__Email__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="project1Model.FK__CardDetail__Type__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="project1Model.FK__Finance__Email__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="project1Model.FK__Finance__Product__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

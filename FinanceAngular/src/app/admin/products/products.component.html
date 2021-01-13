@@ -1,0 +1,40 @@
+<main class="container" role="main">
+    <div class="container jumbotron">
+        <h1 class=" text-center">
+            List of Products
+        </h1>
+   
+    <div class="container">
+        <a [routerLink]="['/admin/products/add']" class="btn btn-primary float-right">Add Products</a><br>
+        <table class="table table-hover">
+            <thead>
+                <tr class="btn-success">
+                    <td scope="col">ProductId</td>
+                    <td scope="col">ProductName</td>
+                    <td scope="col">Stock</td>
+                    <td scope="col">Price</td>
+               
+                    <td scope="col">Display</td>
+                    <td scope="col">Edit</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of Productlist">
+                    <td  scope="row">{{data.ProductID}}</td>
+                    <td>{{data.ProductName}}</td>
+                    <td>{{data.stock}}</td>
+                    <td>{{data.Price}}</td>
+                 
+                    <td><a [routerLink]="['/admin/products/display/',data.ProductID]" class="btn btn-primary btn-sm float-right">Display</a></td>
+                    <td><a [routerLink]="['/admin/products/edit/',data.ProductID]" class="btn btn-warning btn-sm float-right">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <td><a [routerLink]="['/admin']" class="btn btn-warning btn-lg"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></td>
+            <td><a [routerLink]="['/admin']" class="btn btn-success btn-lg" style="float: right;"><i class="fa fa-home" aria-hidden="true"></i> Home</a></td>
+        </table>
+    </div>
+
+</div>
+</main>

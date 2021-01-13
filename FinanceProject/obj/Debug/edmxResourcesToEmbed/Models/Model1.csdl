@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="project1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BankDetail">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BankName" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IFSCCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK__BankDetai__Email__49C3F6B7" FromRole="BankDetails" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="CardDetail">
+    <Key>
+      <PropertyRef Name="CardNumber" />
+    </Key>
+    <Property Name="CardNumber" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CurrentLimit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ValidFrom" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ValidTill" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CVV" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK__CardDetai__Email__34C8D9D1" FromRole="CardDetails" ToRole="UserTable" />
+    <NavigationProperty Name="CardType" Relationship="Self.FK__CardDetail__Type__35BCFE0A" FromRole="CardDetails" ToRole="CardType" />
+  </EntityType>
+  <EntityType Name="CardType">
+    <Key>
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Limit" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="JoiningFee" Type="Int32" />
+    <NavigationProperty Name="CardDetails" Relationship="Self.FK__CardDetail__Type__35BCFE0A" FromRole="CardType" ToRole="CardDetails" />
+  </EntityType>
+  <EntityType Name="Finance">
+    <Key>
+      <PropertyRef Name="FinanceID" />
+    </Key>
+    <Property Name="FinanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Months" Type="Int32" Nullable="false" />
+    <Property Name="EmiAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="RemainingAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="purchaseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="LastPaymentDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK__Finance__Email__4E88ABD4" FromRole="Finance" ToRole="UserTable" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Finance__Product__4F7CD00D" FromRole="Finance" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stock" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ProductDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Finances" Relationship="Self.FK__Finance__Product__4F7CD00D" FromRole="Products" ToRole="Finance" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="validation" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CardType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BankDetail" Relationship="Self.FK__BankDetai__Email__49C3F6B7" FromRole="UserTable" ToRole="BankDetails" />
+    <NavigationProperty Name="CardDetails" Relationship="Self.FK__CardDetai__Email__34C8D9D1" FromRole="UserTable" ToRole="CardDetails" />
+    <NavigationProperty Name="Finances" Relationship="Self.FK__Finance__Email__4E88ABD4" FromRole="UserTable" ToRole="Finance" />
+  </EntityType>
+  <Association Name="FK__BankDetai__Email__49C3F6B7">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+    <End Role="BankDetails" Type="Self.BankDetail" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="BankDetails">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CardDetai__Email__34C8D9D1">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+    <End Role="CardDetails" Type="Self.CardDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="CardDetails">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CardDetail__Type__35BCFE0A">
+    <End Role="CardType" Type="Self.CardType" Multiplicity="1" />
+    <End Role="CardDetails" Type="Self.CardDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CardType">
+        <PropertyRef Name="Type" />
+      </Principal>
+      <Dependent Role="CardDetails">
+        <PropertyRef Name="Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Finance__Email__4E88ABD4">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="Finance" Type="Self.Finance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="Finance">
+        <PropertyRef Name="Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Finance__Product__4F7CD00D">
+    <End Role="Products" Type="Self.Product" Multiplicity="1" />
+    <End Role="Finance" Type="Self.Finance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Finance">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="project1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="BankDetails" EntityType="Self.BankDetail" />
+    <EntitySet Name="CardDetails" EntityType="Self.CardDetail" />
+    <EntitySet Name="CardTypes" EntityType="Self.CardType" />
+    <EntitySet Name="Finances" EntityType="Self.Finance" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+    <AssociationSet Name="FK__BankDetai__Email__49C3F6B7" Association="Self.FK__BankDetai__Email__49C3F6B7">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="BankDetails" EntitySet="BankDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CardDetai__Email__34C8D9D1" Association="Self.FK__CardDetai__Email__34C8D9D1">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="CardDetails" EntitySet="CardDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CardDetail__Type__35BCFE0A" Association="Self.FK__CardDetail__Type__35BCFE0A">
+      <End Role="CardType" EntitySet="CardTypes" />
+      <End Role="CardDetails" EntitySet="CardDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Finance__Email__4E88ABD4" Association="Self.FK__Finance__Email__4E88ABD4">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="Finance" EntitySet="Finances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Finance__Product__4F7CD00D" Association="Self.FK__Finance__Product__4F7CD00D">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Finance" EntitySet="Finances" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

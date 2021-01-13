@@ -1,0 +1,71 @@
+<main class="container" role="main">
+    
+    <div class="container jumbotron">
+        <h3 class="text-center">Adding Product Record</h3>    
+        <form #prodForm='ngForm' (ngSubmit)='saveProd(prod)'>
+            <div class="form-group" [class.has.error]="namecontrol.touched && namecontrol.invalid">
+                <label for="name">Product Name:</label>
+                <input type="text" name="name" id="name" class="form-control" maxlength="50" minlength="4" required [(ngModel)]='prod.ProductName' #namecontrol='ngModel' placeholder="Enter the Product Name" >
+                <div *ngIf="namecontrol.touched && namecontrol.invalid">
+                    <span class="help-block alert-danger" *ngIf="namecontrol.errors.required">
+                        Product name is required
+                    </span>
+                    <br>
+                    <span class="help-block alert-danger" *ngIf="namecontrol.errors.minlength">
+                        Product name should be minlength 4 chars
+                    </span>
+                    </div>
+            </div>
+            <div class="form-group" [class.has.error]="imagecontrol.touched && imagecontrol.invalid">
+                <label for="image">Product Image Name:</label>
+                <input type="text" name="image" id="image" class="form-control"
+                maxlength="50" required [(ngModel)]='prod.ImageName' #imagecontrol='ngModel' placeholder="Enter the Product Image Name">
+                <div *ngIf="imagecontrol.touched && imagecontrol.invalid">
+                    <span class="help-block alert-danger" *ngIf="imagecontrol.errors.required">
+                        Product image Name is required
+                    </span>
+                    <br>
+                    <span class="help-block alert-danger" *ngIf="imagecontrol.errors.maxlength">
+                        Product image Name should be minlength 5 chars
+                    </span>
+                    </div>
+            </div>
+            <div class="form-group"  [class.has.error]="imagecontrol.touched && imagecontrol.invalid">
+                <label for="Stock">Product Stock:</label>
+                <input type="number" name="stock" id="stock" class="form-control" #stockcontrol='ngModel' [(ngModel)]='prod.stock' required placeholder="Enter the Stock Number" />
+                <div *ngIf="stockcontrol.touched && stockcontrol.invalid">
+                    <span class="help-block alert-danger" *ngIf="stockcontrol.errors.required">
+                        Product Stock is required
+                    </span>
+                    </div>
+            </div>
+            <div class="form-group"  [class.has.error]="imagecontrol.touched && imagecontrol.invalid">
+                <label for="Stock">Product Price:</label>
+                <input type="number" name="price" id="price" class="form-control" [(ngModel)]='prod.Price' #pricecontrol='ngModel' required placeholder="Enter the Product Price" />
+                <div *ngIf="pricecontrol.touched && pricecontrol.invalid">
+                    <span class="help-block alert-danger" *ngIf="pricecontrol.errors.required">
+                        Product price is required
+                    </span>
+                    </div>
+            </div>
+            <div class="form-group"  [class.has.error]="imagecontrol.touched && imagecontrol.invalid">
+                <label for="Details">Product Details:</label>
+                <textarea class="form-control" name="details" id="details" cols="30" rows="10" maxlength="1000"
+                [(ngModel)]='prod.ProductDetails' #detailscontrol='ngModel' required placeholder="Enter the Product Details" ></textarea>
+                <div *ngIf="detailscontrol.touched && detailscontrol.invalid">
+                    <span class="help-block alert-danger" *ngIf="pricecontrol.errors.required">
+                        Product price is required
+                    </span>
+                    </div>
+            </div>
+            <div>
+                <button type="submit" [disabled]='prodForm.invalid' class="btn btn-primary">Save</button>
+            </div>
+        </form>
+        <table class="table">
+            <td><a [routerLink]="['/admin/products']" class="btn btn-warning btn-lg"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></td>
+            <td><a [routerLink]="['/admin']" class="btn btn-success btn-lg" style="float: right;"><i class="fa fa-home" aria-hidden="true"></i> Home</a></td>
+        </table>
+    </div>
+    
+</main>

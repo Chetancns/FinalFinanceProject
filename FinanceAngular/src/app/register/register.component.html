@@ -1,0 +1,139 @@
+<div class='container'>
+    <h4>Registration Form</h4>
+    <form #regForm = 'ngForm' (ngSubmit) = 'saveUser(reg)' novalidate> 
+        
+        <!-- Email done-->
+        <div class='form-group' [class.has.error] ='emailcontrol.touched && emailcontrol.invalid'>
+            <label for = 'Id'>Email ID: </label>
+            <input type="email" class='form-control' id ='Email' name = 'Email' required [(ngModel)] = "reg.Email" #emailcontrol = 'ngModel'/>
+            <span class='help-block alert-danger' *ngIf='emailcontrol.touched && emailcontrol.invalid'>
+                Email cannot be blank.
+            </span>
+        </div>
+
+
+        <!-- Password done-->
+        <div class='form-group' [class.has.error] ='passcontrol.touched && passcontrol.invalid'>
+            <label for = 'Id'>Password: </label>
+            <input type="password" class='form-control' id ='Password' name = 'Password' required [(ngModel)] = "reg.password" #passcontrol = 'ngModel'/>
+            <span class='help-block alert-danger' *ngIf='passcontrol.errors?.required && passcontrol.touched'>
+               Password cannot be blank.
+            </span>
+            <!-- <span class='help-block alert-danger' *ngIf='passcontrol.errors?.minlength && passcontrol.invalid'>
+                Password should be atlest 8 characters long.
+            </span> -->
+        </div>
+
+        <!-- Name done-->
+        <div class='form-group' [class.has.error]= 'namecontrol.touched && namecontrol.invalid'>
+            <label for ="Name">Full Name: </label>
+            <input type="text" class='form-control' id = 'Name' name = 'Name' required minlength="5" [(ngModel)] = "reg.Name" #namecontrol = 'ngModel'/>
+            <div *ngIf ='namecontrol.touched && namecontrol.invalid'>
+               <span class='help-block alert-danger' *ngIf ='namecontrol.errors?.required && namecontrol.touched'>
+                    Name cannot be blank
+               </span>
+                <span class='help-block alert-danger' *ngIf ='namecontrol.errors?.minlength'>
+                  Minimum length should be 5
+                </span>
+            </div>
+        </div>
+
+        <!-- Phone Number done-->
+        <div class='form-group' [class.has.error]= 'phonecontrol.touched && phonecontrol.invalid'>
+            <label for ="Name">Contact No.: </label>
+            <input type="text" class='form-control' id = 'phone' name = 'phone' required minlength="10" [(ngModel)] = "reg.PhoneNumber" #phonecontrol = 'ngModel'/>
+            <div *ngIf ='phonecontrol.touched && phonecontrol.invalid'>
+               <span class='help-block alert-danger' *ngIf ='phonecontrol.errors?.required'>
+                    Contact number name is required
+               </span>
+                <span class='help-block alert-danger' *ngIf ='phonecontrol.errors?.minlength'>
+                   Minimum length should be 10
+                </span>
+            </div>
+        </div>
+
+        <!-- username done-->
+        <div class='form-group' [class.has.error]= 'unamecontrol.touched && unamecontrol.invalid'>
+            <label for ="Name">Username: </label>
+            <input type="text" class='form-control' id = 'uname' name = 'uname' required minlength="5" [(ngModel)] = "reg.username" #unamecontrol = 'ngModel'/>
+            <div *ngIf ='unamecontrol.touched && unamecontrol.invalid'>
+               <span class='help-block alert-danger' *ngIf ='unamecontrol.errors?.required'>
+                    Username is required
+               </span>
+                <span class='help-block alert-danger' *ngIf ='unamecontrol.errors?.minlength'>
+                   Minimum length should be 5
+                </span>
+            </div>
+        </div>
+
+        <!-- Address done -->
+        <div class='form-group' [class.has.error]= 'addcontrol.touched && addcontrol.invalid'>
+            <label for ="Name">Address: </label>
+            <input type="text" class='form-control' id = 'add' name = 'add' required [(ngModel)] = "reg.Address" #addcontrol = 'ngModel'/>
+            <div *ngIf ='addcontrol.touched && addcontrol.invalid'>
+               <span class='help-block alert-danger' *ngIf ='addcontrol.errors?.required'>
+                    Address is required
+               </span>
+            </div>
+        </div>
+
+        <!-- CardType -->
+        <div class='form-group' [class.has.error]= 'cardcontrol.touched && cardcontrol.invalid'>
+            <label for ="Name">CardType: </label>
+            <br />
+            <input type="radio" id="card" name="card" value="Gold" required [(ngModel)] = "reg.CardType" #cardcontrol = 'ngModel'>
+            <label for="card" class="form-check-label"> Gold (Processing Fees is ₹1000)</label><br>
+            
+            <input type="radio" id="card1" name="card" value="Titanium" required [(ngModel)] = "reg.CardType" #cardcontrol = 'ngModel'>
+            <label for="card1 " class="form-check-label"> Titanium (Processing Fees is ₹2500)</label><br>
+            
+            <div *ngIf ='cardcontrol.touched && cardcontrol.invalid'>
+               <span class='help-block alert-danger' *ngIf ='cardcontrol.errors?.required'>
+                    select a cardtype
+               </span>
+            </div>
+        </div>
+
+        <!-- Bank Name -->
+        <div class='form-group' [class.has.error]= 'bnamecontrol.touched && bnamecontrol.invalid'>
+            <label for ="Name">Bank Name: </label>
+            <input type="text" class='form-control' id = 'bname' name = 'bname' required [(ngModel)] = "reg.BankName" #bnamecontrol = 'ngModel'/>
+            <div *ngIf ='bnamecontrol.touched && bnamecontrol.invalid'>
+               <span class='help-block alert-danger' *ngIf ='bnamecontrol.errors?.required'>
+                    Bank name is required
+               </span>
+            </div>
+        </div>
+        
+        <!-- Account Number done-->
+        <div class='form-group' [class.has.error]= 'accnocontrol.touched && accnocontrol.invalid'>
+            <label for ="Name">Account Number: </label>
+            <input type="text" class='form-control' id = 'accno' name = 'accno' required minlength="14" [(ngModel)] = "reg.AccountNumber" #accnocontrol = 'ngModel'/>
+            <div *ngIf ='accnocontrol.touched &&accnocontrol.invalid'>
+               <span class='help-block alert-danger' *ngIf ='accnocontrol.errors?.required'>
+                   Account number cannot be blank
+               </span>
+                <span class='help-block alert-danger' *ngIf ='accnocontrol.errors?.minlength'>
+                   Account number should be 14 digits
+                </span>
+            </div>
+        </div>
+
+        <!-- ifsc done -->
+        <div class='form-group' [class.has.error]= 'ifsccontrol.touched && ifsccontrol.invalid'>
+            <label for ="Name">IFSC Code: </label>
+            <input type="text" class='form-control' id = 'ifsc' name = 'ifsc' required [(ngModel)] = "reg.IFSCCode" #ifsccontrol = 'ngModel'/>
+            <div *ngIf ='ifsccontrol.touched && ifsccontrol.invalid'>
+               <span class='help-block alert-danger' *ngIf ='ifsccontrol.errors?.required'>
+                    IFSC Code is required
+               </span>
+            </div>
+        </div>
+        
+        <hr/>
+        <div>
+            <button type="submit" class='btn btn-info' [disabled] = 'regForm.invalid'>Submit</button> 
+            
+        </div>
+    </form>
+</div>

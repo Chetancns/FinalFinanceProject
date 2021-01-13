@@ -1,0 +1,44 @@
+<main class="container" role="main" >
+    <div class= "text-center jumbotron">
+    <h1>UserDetails</h1>
+<div class="container">
+    <table class="table">
+        <tr>
+            <td class="table-info"><h6>Email:</h6></td>
+        <td>{{Userdata.Email}}</td>
+        <td colspan="2" class="btn-success text-center" ><h4>Bank Details</h4></td>
+        </tr>
+        <tr>
+            <td class="table-info"><h6> User Name:</h6></td>
+            <td>{{Userdata.Name}}</td>
+            <td class="table-info"><h6>Account Number:</h6></td>
+            <td>{{Userdata.BankDetail.AccountNumber}}</td>
+        </tr>
+        <tr>
+            <td class="table-info"><h6>Phone Number:</h6></td>
+            <td>{{Userdata.PhoneNumber}}</td>
+            <td class="table-info"><h6>Bank Name:</h6></td>
+            <td>{{Userdata.BankDetail.BankName}}</td>
+        </tr>
+        <tr>
+            <td class="table-info"><h6>Address:</h6></td>
+            <td>{{Userdata.Address}}</td>
+            <td class="table-info"><h6>IFSC Code:</h6></td>
+            <td>{{Userdata.BankDetail.IFSCCode}}</td>
+        </tr>
+        <tr>
+            <td class="table-info"><h6>CardType</h6></td>
+            <td>{{Userdata.CardType}}</td>
+            <td><button class="btn btn-primary" (click)="OnApprove(Userdata.Email)">Approve</button></td>
+            <td><button class="btn btn-danger" (click)="OnReject(Userdata.Email)">Reject</button></td>
+        </tr>
+    </table>
+    <table class="table">
+        <td><a [routerLink]="['/admin/validate']" class="btn btn-warning btn-lg"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></td>
+        <td><a [routerLink]="['/admin']" class="btn btn-success btn-lg"><i class="fa fa-home" aria-hidden="true"></i> Home</a></td>
+    </table>
+</div>
+</div>
+</main>
+
+

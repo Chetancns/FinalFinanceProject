@@ -1,0 +1,39 @@
+<section class="Form my-4 mx-5">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-lg-7 px-5 pt-5">
+                <h1>Admin Login</h1>
+                <h4> Login into your account</h4>
+                <br><br>
+                <form [formGroup] = "loginForm" (ngSubmit) = "doadminlogin()">
+                    <div class="form-row">
+                        <div class="form-group col-lg-7">
+                            <label> Email : </label>
+                            <input type = "text" class="form-control" formControlName = "Email" >
+                            <div *ngIf = "h.Email.errors && h.Email.touched" class="text-danger">
+                                <div *ngIf = "h.Email.errors.required">Email is required</div>
+                                <div *ngIf = "h.Email.errors.email">Email must be a valid email address</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="from-group col-lg-7">
+                            <label> Password : </label>
+                            <input type = "password" class="form-control" formControlName = "password">
+                            <div *ngIf="h.password.errors &&h.password.touched" class="text-danger">
+                                <div *ngIf = "h.password.errors.required">Password is required</div>
+                                <div *ngIf = "h.password.errors.minlength">Password must be of minimum 6 characters</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-7">
+                            <button class="btn1 mt-3 mb-5">Login</button>
+                        </div>
+                    </div>
+                    
+                </form>                
+            </div>
+        </div>
+    </div>
+  </section>

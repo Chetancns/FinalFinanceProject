@@ -1,0 +1,47 @@
+<div class='container'>
+    <h4>Registration Form</h4>
+    <form #forgotpassForm = 'ngForm' (ngSubmit) = 'savepass(email, phonenumber, password)' novalidate> 
+        
+        <!-- Email done-->
+        <div class='form-group' [class.has.error] ='emailcontrol.touched && emailcontrol.invalid'>
+            <label for = 'Id'>Email ID: </label>
+            <input type="email" class='form-control' id ='Email' name = 'Email' required [(ngModel)] = "email" #emailcontrol = 'ngModel'/>
+            <span class='help-block alert-danger' *ngIf='emailcontrol.touched && emailcontrol.invalid'>
+                Email cannot be blank.
+            </span>
+        </div>
+
+        <!--Phonenumber-->
+        <div class='form-group' [class.has.error]= 'phonecontrol.touched && phonecontrol.invalid'>
+            <label for ="Name">Enter registered contact No.: </label>
+            <input type="text" class='form-control' id = 'phonenumber' name = 'phonenumber' required minlength="10" [(ngModel)] = "phonenumber" #phonecontrol = 'ngModel'/>
+            <div *ngIf ='phonecontrol.touched && phonecontrol.invalid'>
+               <span class='help-block alert-danger' *ngIf ='phonecontrol.errors?.required'>
+                    Contact number name is required
+               </span>
+                <span class='help-block alert-danger' *ngIf ='phonecontrol.errors?.minlength'>
+                   Minimum length should be 10
+                </span>
+            </div>
+        </div>
+
+        <!--Password-->
+        <div class='form-group' [class.has.error] ='passcontrol.touched && passcontrol.invalid'>
+            <label for = 'Id'>New Password: </label>
+            <input type="text" class='form-control' id ='Password' name = 'Password' required [(ngModel)] = "password" #passcontrol = 'ngModel'/>
+            <span class='help-block alert-danger' *ngIf='passcontrol.errors?.required && passcontrol.touched'>
+               Password cannot be blank.
+            </span>
+            <!-- <span class='help-block alert-danger' *ngIf='passcontrol.errors?.minlength && passcontrol.invalid'>
+                Password should be atlest 8 characters long.
+            </span> -->
+        </div>
+
+        <hr/>
+        <div>
+            <button type="submit" class='btn btn-info' [disabled] = 'forgotpassForm.invalid'>Submit</button> 
+            
+        </div>
+    </form>
+</div>
+

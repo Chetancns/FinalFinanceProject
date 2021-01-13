@@ -1,0 +1,32 @@
+<main class="container" role="main">
+    <div class="container jumbotron">
+        <h2 class=" text-center">
+            Details of  {{product.ProductName}}
+        </h2>
+    <div class="col text-center" >
+        <div class="row" >
+            <div class="col-12 col-md-6 col-lg-8">
+                <div class="card">
+                    <img class="card-img-top"  src="{{'assets/images/' + product.ImageName}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">{{product.ProductName}}</h4>
+                        <p class="card-text">{{product.ProductDetails}}</p>
+                        <div class="row">
+                            <div class="col">
+                                <p class="btn btn-danger btn-block">{{product.Price}} &#x20b9; </p>
+                            </div>
+                            <div class="col">
+                                <p class="btn btn-success btn-block">Stock {{product.stock}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <td><a [routerLink]="['/admin/products']" class="btn btn-warning btn-lg"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a></td>
+        <td><a [routerLink]="['/admin']" class="btn btn-success btn-lg"><i class="fa fa-home" aria-hidden="true"></i> Home</a></td>
+    </table>
+    </div>
+</main>
