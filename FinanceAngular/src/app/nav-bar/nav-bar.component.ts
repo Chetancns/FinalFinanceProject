@@ -6,7 +6,7 @@ import {UserloginserviceService} from './../services/userloginservice.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-role:string;
+  role=sessionStorage.getItem('role');
   constructor(private userservices:UserloginserviceService) {
     
    }
@@ -15,7 +15,7 @@ role:string;
    }
 
   ngOnInit(): void {
-    this.role=sessionStorage.getItem('role');
+    
   }
 
 }
